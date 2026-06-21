@@ -1,4 +1,5 @@
 .venv/
+venv/
 .idea/
 __pycache__/
 
@@ -23,3 +24,25 @@ BERFte/
 *.bin
 *.pt
 *.pth
+
+# Python
+*.py[cod]
+*$py.class
+build/
+dist/
+.eggs/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+ENV/
+env/
+venv.bak/
+env.bak/
+
+# Jupyter
+.ipynb_checkpoints
