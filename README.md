@@ -1,12 +1,14 @@
-# BERF - BERT Enhanced Recommendation Framework
+# BERF - Finance assistant
 
-BERF is an AI-powered financial advisor that combines Natural Language Processing (NLP), Machine Learning, and financial market data to analyze investor queries and generate stock recommendations.
+BERF is an AI-powered financial advisor that combines Natural Language Processing (NLP), Machine Learning, decision forests, and financial market data to analyze investor queries and generate stock recommendations.
 
 The project was built to explore how multiple AI models can work together to understand investment questions, analyze company fundamentals, and provide personalized investment insights.
 
 ## Features
 
 * Ticker extraction from natural language queries
+* Decision forest scoring system
+* Portfolio creation
 * Investment intent classification
 * Timeframe classification
 * Risk profile classification
@@ -19,27 +21,112 @@ The project was built to explore how multiple AI models can work together to und
 
 ```text
 User Query
-    ↓
-Ticker Extraction
-    ↓
-Intent Classification
-    ↓
-Timeframe Classification
-    ↓
-Risk Classification
-    ↓
-Sector Classification
-    ↓
-Market Cap Classification
-    ↓
+     │
+     ▼
+BERF Intent Model
+(Analysis / Recommendation / Portfolio)
+     │
+     ├───────────────┬────────────────┐
+     │               │                │
+     ▼               ▼                ▼
+Analysis       Recommendation     Portfolio
+Workflow        Workflow          Workflow
+
+
+ANALYSIS WORKFLOW
+
+User Query
+     │
+     ▼
+Ticker Extraction (BERFte)
+     │
+     ▼
+Timeframe Classification (BERFt)
+     │
+     ▼
+BERFa Action Classification
+(Buy / Sell / Hold / Compare / General Analysis)
+     │
+     ▼
 Financial Data Collection
-    ↓
-Recommendation Models
-    ↓
-Final Investment Analysis
+(Yahoo Finance)
+     │
+     ▼
+Fundamental Analysis Engine
+     │
+     ▼
+Natural Language Response
+
+
+RECOMMENDATION WORKFLOW
+
+User Query
+     │
+     ▼
+Timeframe Classification (BERFt)
+     │
+     ▼
+Risk Classification (BERFrisk)
+     │
+     ▼
+Market Cap Classification (BERFmc)
+     │
+     ▼
+Sector Classification (BERFs)
+     │
+     ▼
+Financial Data Collection
+     │
+     ▼
+Scoring Models
+(Random Forest Models)
+     │
+     ▼
+Sorting Engine
+     │
+     ▼
+Final Recommendation(Top 20)
+
+
+PORTFOLIO WORKFLOW
+
+User Query
+     │
+     ▼
+Timeframe Classification (BERFt)
+     │
+     ▼
+Risk Classification (BERFrisk)
+     │
+     ▼
+Market Cap Classification (BERFmc)
+     │
+     ▼
+Sector Classification (BERFs)
+     │
+     ▼
+Financial Data Collection
+     │
+     ▼
+Scoring Models
+(Random Forest Models)
+     │
+     ▼
+Sorting Engine
+     │
+     ▼
+Capital Allocation
+     │
+     ▼
+Portfolio Construction
+     │
+     ▼
+Final Portfolio Recommendation
 ```
 
-## Models
+```
+
+## Models:
 
 ### BERFa
 
@@ -49,7 +136,6 @@ Classifies user intent into:
 * Sell
 * Hold
 * Compare
-* Recommend
 * General Analysis
 
 ### BERFt
@@ -59,6 +145,7 @@ Classifies investment horizon:
 * Short Term
 * Medium Term
 * Long Term
+* unspecified
 
 ### BERFrisk
 
@@ -67,10 +154,11 @@ Classifies investor risk tolerance:
 * Low Risk
 * Medium Risk
 * High Risk
+* unspecified
 
 ### BERFs
 
-Identifies the sector associated with a stock or investment query.
+Identifies the sector from investment query.
 
 ### BERFmc
 
@@ -79,14 +167,15 @@ Classifies companies into:
 * Small Cap
 * Mid Cap
 * Large Cap
+* unspecified
 
-### Recommendation Models
+### Scoring Models
 
 Random Forest models trained on historical market and financial data for:
 
-* Short-term recommendations
-* Medium-term recommendations
-* Long-term recommendations
+* Short-term 
+* Medium-term 
+* Long-term 
 
 ## Technologies Used
 
@@ -101,32 +190,13 @@ Random Forest models trained on historical market and financial data for:
 * spaCy
 * RapidFuzz
 
-## Example
-
-**Input**
-
-```text
-Should I buy Nvidia for the next 2 years?
-```
-
-**BERF Process**
-
-* Extracts NVDA as the ticker
-* Detects Buy intent
-* Detects Medium-Term investment horizon
-* Retrieves financial data
-* Evaluates company fundamentals
-* Generates a recommendation
-
 ## Project Goal
 
 The objective of BERF is to demonstrate how multiple machine learning models can be integrated into a complete financial analysis pipeline that understands investor intent and produces data-driven recommendations.
 
-## Disclaimer
-
-This project is intended for educational and research purposes only. The generated recommendations should not be considered financial advice. Always conduct your own research before making investment decisions.
 
 ## Author
 
 Aravind Kanduri
 National Institute of Technology Warangal
+BTECH - 1st year
